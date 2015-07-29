@@ -4,7 +4,7 @@ from numpy.distutils.misc_util import get_numpy_include_dirs
 
 
 # Sources
-sources = ["my_extension/example_ext.pyx"]
+sources = ["my_extension/carray_ext.pyx"]
 
 setup(
     name="my_package",
@@ -17,5 +17,5 @@ setup(
         ),
     ],
     cmdclass={"build_ext": build_ext},
-    packages=['my_extension'],
+    packages=['my_extension', 'tests'],
 )
