@@ -12,7 +12,7 @@ setup(
     license='MY_LICENSE', 
     ext_modules=[
         Extension(
-            "my_extension.example_ext",
+            "my_extension.carray_ext",
             sources=sources,
         ),
     ],

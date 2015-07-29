@@ -1,9 +1,12 @@
 import cython
 import bcolz as bz
-from bcolz.carray_ext cimport carray as origin_carray
+from bcolz.carray_ext cimport carray as carray_
 from numpy cimport ndarray, npy_int64
 
-cdef class carray(origin_carray):
+cdef class carray(carray_):
+    def carray_steroid(self, carray_):
+        self = carray_
+
     def factorize(self):
         pass
 
