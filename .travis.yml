@@ -15,7 +15,7 @@ install:
   - conda update conda
 
   # Install dependencies
-  - conda create -n bcolz_env python=$TRAVIS_PYTHON_VERSION numpy pandas cython
+  - conda create -n bcolz_env python=$TRAVIS_PYTHON_VERSION numpy cython bcolz
   - source activate bcolz_env
   
   # Build bcolz
