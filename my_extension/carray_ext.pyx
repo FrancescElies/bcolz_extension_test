@@ -4,9 +4,6 @@ from bcolz.carray_ext cimport carray as carray_
 from numpy cimport ndarray, npy_int64
 
 cdef class carray(carray_):
-    def carray_steroid(self, carray_):
-        self = carray_
-
     def factorize(self):
         pass
 
