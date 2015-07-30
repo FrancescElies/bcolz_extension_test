@@ -1,3 +1,6 @@
+#!python
+#cython: embedsignature=True
+
 import cython
 import bcolz as bz
 from bcolz.carray_ext cimport carray as carray_
@@ -5,7 +8,7 @@ from numpy cimport ndarray, npy_int64
 
 cdef class carray(carray_):
     def factorize(self):
-        pass
+        print self
 
 
     @cython.overflowcheck(True)
