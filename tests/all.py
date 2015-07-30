@@ -1,6 +1,7 @@
 import tempfile
 import numpy as np
 import bcolz
+from bcolz.tests.common import MayBeDiskTest
 import my_extension
 from my_extension import carray, ctable
 
@@ -11,7 +12,7 @@ else:
     from mock import Mock, patch
 
 
-class HelperCarray(bcolz.tests.common.MayBeDiskTest):
+class HelperCarray(MayBeDiskTest):
 
     def test_01(self):
         a = carray([1, 2, 3, 4])
@@ -26,7 +27,7 @@ class TestCarrayDisk(HelperCarray):
     disk = True
 
 
-class HelperCtable(bcolz.tests.common.MayBeDiskTest):
+class HelperCtable(MayBeDiskTest):
     pass
 
 
