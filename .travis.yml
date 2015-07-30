@@ -15,10 +15,13 @@ install:
   - conda update conda
 
   # Install dependencies
-  - conda create -n bcolz_env python=$TRAVIS_PYTHON_VERSION numpy cython bcolz nose mock
+  - conda create -n bcolz_env python=$TRAVIS_PYTHON_VERSION numpy cython bcolz nose
   - source activate bcolz_env
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then conda install unittest2 mock; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then conda install mock; fi
+
   
-  # Build bcolz
+  # Build
   - python setup.py build_ext --inplace
 
 script:
