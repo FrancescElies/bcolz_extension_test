@@ -37,6 +37,4 @@ class TestCtableDisk(HelperCtable):
         a = ctable(np.array([(1, 2.0), (3, 4.0)], dtype="i4,f8"), 
                 rootdir=self.rootdir)
         
-        with patch.object(carray, 'factorize'):
-            pass
         a.factorize()
