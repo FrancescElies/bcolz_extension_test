@@ -3,12 +3,15 @@
 
 import cython
 import bcolz as bz
-from bcolz.carray_ext cimport carray as carray_
+from bcolz.carray_ext cimport carray
 from numpy cimport ndarray, npy_int64
-
-cdef class carray(carray_):
-    def factorize(self):
-        print self
+  
+cdef class CarrayOnSteroids(carray):
+    def factorize(self, id=None):
+        #TODO: rootdir
+        ret = self, id
+        print ret
+        return ret
 
 
     @cython.overflowcheck(True)

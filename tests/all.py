@@ -3,7 +3,7 @@ import numpy as np
 import bcolz
 from bcolz.tests.common import MayBeDiskTest
 import my_extension
-from my_extension import carray, ctable
+from my_extension import CarrayOnSteroids, ctable
 
 import sys
 if sys.version[0:3] >= '3.3':
@@ -15,7 +15,7 @@ else:
 class HelperCarray(MayBeDiskTest):
 
     def test_01(self):
-        a = carray([1, 2, 3, 4])
+        a = CarrayOnSteroids([1, 2, 3, 4])
         a.factorize()
 
 
