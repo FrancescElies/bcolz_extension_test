@@ -17,13 +17,13 @@ class ctable(bcolz.ctable):
         result_list.append(result)
 
     def factorize(self):
-        ca_factorize = getattr(CarrayOnSteroids, 'factorize')
+        ca_factorize = CarrayOnSteroids.factorize_ # getattr(CarrayOnSteroids, 'factorize')
         result_list = []
         
         if self.is_on_disk():
             p = mp.Pool(NUM_PROCESSORS)
             for column in self.cols:
-                ca = CarrayOnSteroids(rootdir=self[column].rootdir)
+                ca = self[column]
                 p.apply_async(ca_factorize, (ca, ), {'id': column},
                         callback=self.factorize_log_result)
             p.close()

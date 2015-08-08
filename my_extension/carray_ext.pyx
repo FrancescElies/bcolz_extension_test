@@ -2,17 +2,21 @@
 #cython: embedsignature=True
 
 import cython
-import bcolz as bz
+import bcolz
 from bcolz.carray_ext cimport carray
 from numpy cimport ndarray, npy_int64
   
 cdef class CarrayOnSteroids(carray):
-    def factorize(self, id=None):
+    
+    @staticmethod
+    def factorize_(carray_, id=None, rootdir=None):
         #TODO: rootdir
-        ret = self, id
+        ret = carray_, id
         print ret
         return ret
 
+    def factorize(self, id=None, rootdir=None):
+        return CarrayOnSteroids.factorize_(self, id=id, rootdir=rootdir)
 
     @cython.overflowcheck(True)
     @cython.boundscheck(False)
@@ -21,9 +25,9 @@ cdef class CarrayOnSteroids(carray):
         """
             Function for example purposes
             
-            >>> import bcolz as bz
+            >>> import bcolz as bcolz
             >>> import my_extension.example_ext as my_mod
-            >>> c = bz.carray([i for i in range(1000)], dtype='i8')
+            >>> c = bcolz.carray([i for i in range(1000)], dtype='i8')
             >>> my_mod.my_function(c)
             499500
 
@@ -34,7 +38,7 @@ cdef class CarrayOnSteroids(carray):
             Py_ssize_t len_ca_segment
             npy_int64 sum=0
 
-        for ca_segment in bz.iterblocks(self):
+        for ca_segment in bcolz.iterblocks(self):
             len_ca_segment = len(ca_segment)
             for i in range(len_ca_segment):
                 sum = sum + ca_segment[i]
