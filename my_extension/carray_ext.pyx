@@ -5,6 +5,11 @@ import cython
 import bcolz
 from bcolz.carray_ext cimport carray
 from numpy cimport ndarray, npy_int64
+from khash cimport kh_str_t, kh_int64_t, kh_int32_t, kh_float64_t, \
+        kh_get_str, kh_get_int64, kh_get_int32, kh_float64_t, \
+        kh_put_str, kh_put_int64, kh_put_int32, kh_put_int64
+
+
   
 cdef class CarrayOnSteroids(carray):
     

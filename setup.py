@@ -3,11 +3,14 @@ from Cython.Distutils import build_ext
 from numpy.distutils.misc_util import get_numpy_include_dirs
 
 # Sources & libraries
-inc_dirs = ['my_extension']
+inc_dirs = ['my_extension', 'my_extension/lib_hash/klib']
 lib_dirs = []
 libs = []
 def_macros = []
-sources = ["my_extension/carray_ext.pyx"]
+sources = [
+    "my_extension/carray_ext.pyx",
+    "my_extension/lib_hash/klib/khash.pxd",
+]
 
 # Include NumPy header dirs
 from numpy.distutils.misc_util import get_numpy_include_dirs
@@ -19,7 +22,7 @@ optional_libs = []
 setup(
     name="my_package",
     description='My description',
-    license='MY_LICENSE', 
+    license='MY_LICENSE',
     ext_modules=[
         Extension(
             "my_extension.carray_ext",
