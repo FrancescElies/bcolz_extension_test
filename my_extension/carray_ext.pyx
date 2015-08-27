@@ -13,15 +13,11 @@ from khash cimport kh_str_t, kh_int64_t, kh_int32_t, kh_float64_t, \
   
 cdef class CarrayOnSteroids(carray):
     
-    @staticmethod
-    def factorize_(carray_, id=None, rootdir=None):
+    def factorize(self, id=None, rootdir=None):
         #TODO: rootdir
-        ret = carray_, id
+        ret = id
         print ret
         return ret
-
-    def factorize(self, id=None, rootdir=None):
-        return CarrayOnSteroids.factorize_(self, id=id, rootdir=rootdir)
 
     @cython.overflowcheck(True)
     @cython.boundscheck(False)
