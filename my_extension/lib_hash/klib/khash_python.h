@@ -3,6 +3,7 @@
 #include "khash.h"
 
 // kludge
+typedef double khfloat64_t;
 
 #define kh_float64_hash_func _Py_HashDouble
 #define kh_float64_hash_equal(a, b) ((a) == (b) || ((b) != (b) && (a) != (a)))
@@ -13,7 +14,7 @@
 KHASH_MAP_INIT_FLOAT64(float64, size_t)
 
 
-int PANDAS_INLINE pyobject_cmp(PyObject* a, PyObject* b) {
+int kh_inline pyobject_cmp(PyObject* a, PyObject* b) {
 	int result = PyObject_RichCompareBool(a, b, Py_EQ);
 	if (result < 0) {
 		PyErr_Clear();
